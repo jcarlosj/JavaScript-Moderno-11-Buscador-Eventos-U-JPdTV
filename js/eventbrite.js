@@ -25,6 +25,20 @@ class EventBrite {
         return {                                                                                          
             dataCategorias
         }
-
     }
+
+    // Mostrar resultados de la búsqueda
+    async obtenerEventos( evento, categoria ) {
+        // FecthAPI usando Promises (Se conecta a los datos)
+        const data = await fetch( `https://www.eventbriteapi.com/v3/events/search/?q=${ evento }&sort_by=${ this .ordenar }&categories=${ categoria }&token=${ this .tokenOAuth }` );
+
+        // Respuesta JSON de todas los eventos (Convierte JSON en un 'Array')
+        const dataEventos = await data .json();
+
+        // Retorna un Objeto con un 'Array' de todas los eventos 
+        return {                                                                                          
+            dataEventos
+        }
+    }
+
 }

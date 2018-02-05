@@ -15,7 +15,11 @@ document .getElementById( 'buscarBtn' ) .addEventListener( 'click', e => {
 
     // Valida que el campo del buscador no esté vacío (Nombre o Ciudad)
     if( nombreCiudad !== '' ) {
-        console .log( 'Buscando...' );
+        // Busqueda
+        eventBrite .obtenerEventos( nombreCiudad, categoriaSeleccionada )
+            .then( data => {
+                console .log( 'Eventos ', data );
+            });
     }
     else {
         ui .mostrarMensaje( 
