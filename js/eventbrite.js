@@ -13,9 +13,18 @@ class EventBrite {
         this .obtenerCategorias();
     }
 
-    // Obtiene las categorias en init()
+    // Obtiene categorías REST API EventBrite en init()
     async obtenerCategorias() {
-        // Consulta categorías REST API EventBrite
-        console .log( 'Obtiene las categorías' );
+        // FecthAPI usando Promises (Se conecta a los datos)
+        const data = await fetch( `https://www.eventbriteapi.com/v3/categories/?token=${ this .tokenOAuth }` );
+
+        // Respuesta JSON de todas las categorias (Convierte JSON en un 'Array')
+        const dataCategorias = await data .json();
+
+        // Retorna un Objeto con un 'Array' de todas las categorías 
+        return {                                                                                          
+            dataCategorias
+        }
+
     }
 }
