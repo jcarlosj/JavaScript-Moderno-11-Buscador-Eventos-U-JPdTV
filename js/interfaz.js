@@ -34,4 +34,28 @@ class Interfaz {
             });    
     }
 
+    // Despliega mensajes en el DOM
+    mostrarMensaje( clases, mensaje ) {
+        const div = document .createElement( 'div' ),                                               // Crea elemento 'div'
+              buscadorDiv = document .querySelector( '#buscador' );                                 // Obtiene el elemento con el ID 'buscador'
+
+        div .classList = clases;                                                                    // Agrega las clases a la propiedad 'class' del elemento 'div'
+        div .appendChild( document .createTextNode( mensaje ) );                                    // Agrega nodo de texto al elemento 'div'
+        buscadorDiv .appendChild( div );                                                            // Agrega el elemento 'div' al elemento con el id 'buscador' para desplegar el mensaje en el DOM
+
+        // Desaparece el mensaje luego de pasados 3 segundos
+        setTimeout( () => {
+            this .limpiarMensaje();
+        }, 3000 );      // 3 segundos
+    }
+
+    // Desaparece el mensaje en el DOM (En caso que exista)
+    limpiarMensaje() {
+        const alerta = document .querySelector( '.alert' );
+
+        if( alerta ) {
+            alerta .remove();                                                                       // Elimina el elemento 'div' que despliega los mensajes
+        }
+    }
+
 }

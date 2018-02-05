@@ -18,6 +18,9 @@ document .getElementById( 'buscarBtn' ) .addEventListener( 'click', e => {
         console .log( 'Buscando...' );
     }
     else {
-        console .log( 'Hey! no hay nada en el campo de búsqueda' );
+        ui .mostrarMensaje( 
+            'alert alert-danger mt-4',              // Clases de Bootstrap para aplicar
+            'Hey! escribe algo en el buscador'      // Mensaje
+        );
     }
 });
