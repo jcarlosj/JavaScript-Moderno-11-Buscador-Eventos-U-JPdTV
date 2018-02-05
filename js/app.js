@@ -19,6 +19,17 @@ document .getElementById( 'buscarBtn' ) .addEventListener( 'click', e => {
         eventBrite .obtenerEventos( nombreCiudad, categoriaSeleccionada )
             .then( data => {
                 console .log( 'Eventos ', data );
+                if( data .dataEventos .events .length > 0 ) {
+                    console.log( 'Hay eventos' );
+                    ui .limpiarEventos();
+                    ui .mostrarEventos( data .dataEventos .events );
+                }
+                else {
+                    ui .mostrarMensaje( 
+                        'alert alert-danger mt-4',              // Clases de Bootstrap para aplicar
+                        'Lo sentimos! No hay eventos'           // Mensaje
+                    );
+                }
             });
     }
     else {
